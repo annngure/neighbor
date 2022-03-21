@@ -32,23 +32,9 @@ class NeighbourHood(models.Model):
         neighbourHood= cls.objects.filter(name__icontains=search_term)
         return neighbourHood  
 
-class User (models.Model):
-    User_name=models.CharField(max_length=255)
-    neighbourHood= models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, blank=True)
-
-
-    def save_User(self):
-        self.save()
-
-    def delete_User(self):
-        self.delete()
-
-    def __str__(self):
-        return self.user
-
 class Business(models.Model):
     Business_name =models.CharField(max_length=255)
-    User= models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     Business_email = models.EmailField()
 
     def save_business(self):
@@ -88,7 +74,7 @@ class Posts(models.Model):
     post = HTMLField()
     pub_date = models.DateTimeField(auto_now_add=True)    
     neighbourhood = models.ForeignKey(NeighbourHood,on_delete=models.CASCADE)
-    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
 
 
