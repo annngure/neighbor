@@ -1,50 +1,42 @@
 {% load static %}
 <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Charmonman|Kodchasan|Dancing+Script|Spirax" rel="stylesheet">
-
-<nav class="navbar bg-light ">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" id="victor" href="{% url 'index' %}">HOOD.
-      </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <ol class="nav-item active">
+        <a class="navbar-brand" href="{% url 'index' %}">HOOD.</a>
+    </ol>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            {% if user.is_authenticated %}
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="font-family:'Times New Roman', Times, serif;">
+             <ol class="nav-item active">
+                <a href="" class="nav-link">Edit Profile</a>
+             </ol> 
+      
+            <ol class="nav-item active">
+              <a class="nav-link"href="{%url 'logout'%}">Logout</a>
+            
+            </ol>
+            {% else %}
+            <ol class="nav-item active" style="font-family:'Times New Roman', Times, serif;">
+              <a class='btn btn-default' href="{%url 'login'%}">Login</a>
+            </ol>
+      
+            <ol class="nav-item active" style="font-family: 'Dosis', sans-serif;">
+              <a class='btn btn-default' href="{%url 'register'%}">Register</a>
+            </ol>
+        </ul>      
+     {% endif %}
     </div>
-    <div class="col-sm-6 col-md-6">
-      {% if user.is_authenticated %}
-
-        <div style="font-family:'Times New Roman', Times, serif;">
-        <a href="">Edit Profile</a>
-        </div>
-
-        <div style="font-family:'Times New Roman', Times, serif;">
-        <a href="{%url 'logout'%}">Logout</a>
-        </div>
-
-      {% else %}
-        <div style="font-family:'Times New Roman', Times, serif;">
-        <a class='btn btn-default' href="{%url 'login'%}">Login</a>
-        </div>
-
-        <div style="font-family: 'Dosis', sans-serif;">
-        <a class='btn btn-default' href="{%url 'register'%}">Register</a>
-        </div>
-
-{% endif %}
-    </div>
-
     <div class="col-sm-4 col-md-4 navbar-right">
 
-      <form class="navbar-form" role="search" action="{% url 'search' %}">
-
-        <div class="input-group">
-          <input type="text" style="font-family:'Times New Roman', Times, serif;" class="form-control mr-sm-4" placeholder="Search Project" name="project">
-          <div class="input-group-btn">
-            <button class="btn btn-outline-danger my-2 my-sm-0" style="font-family:'Times New Roman', Times, serif;" type="submit">Search.</button>
+        <form class="navbar-form" role="search" action="{% url 'search' %}">
+  
+          <div class="input-group">
+            <input type="text" style="font-family:'Times New Roman', Times, serif;" class="form-control mr-sm-4" placeholder="Search Project" name="project">
+            <div class="input-group-btn">
+              <button class="btn btn-outline-danger my-2 my-sm-0" style="font-family:'Times New Roman', Times, serif;" type="submit">Search.</button>
+            </div>
           </div>
-        </div>
-
-
-      </form>
-
-    </div>
-
-  </div>
-</nav>
+  
+  
+        </form>
+  </nav>
