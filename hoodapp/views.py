@@ -45,6 +45,25 @@ def loginPage(request):
 
     return render(request,'registration/login.html')
 
+def profileView(request):
+    current_user = request.user
+
+    if request.method == 'POST':
+        form = UpdateProfileForm(request.POST,request.FILES, instance = current_user.profile)
+        if form.is_valid():
+            image =form.save(commit = False)
+            image.user = current_user
+            image.save()
+        return redirect ('index')
+
+    else:
+        form = UpdateProfileForm()
+    context={
+        "form":form
+    }
+    return render(request, 'profile.html',context)
+
+
 def logout(request):
     auth.logout(request)
     return redirect('login')

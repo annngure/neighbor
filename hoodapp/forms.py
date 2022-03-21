@@ -18,4 +18,10 @@ class NewUserForm(UserCreationForm):
         user.email = self.cleaned_data['email']
         if commit:
             user.save()
-        return 
+        return user
+
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile 
+        fields = ("user","bio","profile_image","neighbourhood","email")
