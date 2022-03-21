@@ -12,7 +12,7 @@ urlpatterns=[
     path('logout/',LogoutView.as_view(next_page ="index"), name="logout"),
     path('profile/',views.profileView, name="profile"),
     path('search/',views.search_business,name ='search'),
-    # path('post/')
+    path('post/',views.post,name ='post')
 
 ]
 

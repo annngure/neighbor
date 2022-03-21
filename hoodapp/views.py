@@ -82,3 +82,6 @@ def search_business(request):
     else:
         message = "You haven't searched yet"
         return render(request, 'search.html')
+
+def post(request):
+    return render(request,'post.html')
