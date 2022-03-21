@@ -1,15 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
-# from cloudinary.models import CloudinaryField
 
-
-# # Create your models here.
-
+# Create your models here.
 class NeighbourHood(models.Model):
     Name=models.CharField(max_length=255)
     Location = models.CharField(max_length=255)
-    Occupants=models.Integer()
-    Admin = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    Occupants=models.IntegerField()
+    Admin= models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
+   
 
     def save_neighbourHood(self):
         self.save()
@@ -20,7 +18,7 @@ class NeighbourHood(models.Model):
     @classmethod
     def find_neighbourHood(request,NeighbourHood):
         try:
-            project = NeighbourHood.objects.get(pk=id)
+            neighbourHood = NeighbourHood.objects.get(pk=id)
 
         except ObjectDoesNotExist:
             raise Http404()
@@ -32,15 +30,22 @@ class NeighbourHood(models.Model):
         neighbourHood= cls.objects.filter(name__icontains=search_term)
         return neighbourHood  
 
-class User(models.Model):
+class User (models.Model):
     User_name=models.CharField(max_length=255)
-    email=models.EmailField()
+    neighbourHood= models.ForeignKey(NeighbourHood, on_delete=models.CASCADE, blank=True)
+
+
+    def save_User(self):
+        self.save()
+
+    def delete_User(self):
+        self.delete()
+
 
 class Business(models.Model):
-    Business_name=models.CharField(max_length=255)
-    User = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
-    Business_email=models.EmailField()
-
+    Business_name =models.CharField(max_length=255)
+    User= models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    Business_email = models.EmailField()
 
     def save_business(self):
         self.save()
@@ -49,7 +54,11 @@ class Business(models.Model):
         self.delete()
 
     @classmethod
-    def search_business(cls,searchterm):
-        business = cls.objects.filter(name__icontains=search_term)
-        return business  
+    def find_business(request,Business):
+        try:
+            business= Business.objects.get(pk=id)
 
+        except ObjectDoesNotExist:
+            raise Http404()
+    def __str__(self):
+        return self.name
