@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{%load bootstrap4%}
+{% block content %}
+
+<body>
+
+<h1 class="text-center">Reviews.</h1>
+ <h2><a href="{% url 'project' %}">{{ review.project.user }}</a></h2>
+
+<h4 style="font-family:'Times New Roman', Times, serif;">Rated {{ review.content}} of 10 by
+    <a href="{% url 'profile' %}" >{{ review.user }}</a></h4>
+
+
+<h4 style="font-family:'Times New Roman', Times, serif;">Rated {{ review.design }} of 10 by
+    <a href="{% url 'profile' %}" >{{ review.user }}</a></h4>
+
+<h4 style="font-family:'Times New Roman', Times, serif;">Rated {{ review.usability}} of 10 by
+    <a href="{% url 'profile' %}" >{{ review.user }}</a></h4>
+<p>{{ review.comment }}</p>   
+</body>
+
+
+{% endblock %}

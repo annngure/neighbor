@@ -1,0 +1,54 @@
+{% load static %}
+<link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Charmonman|Kodchasan|Dancing+Script|Spirax" rel="stylesheet">
+
+<nav class="navbar bg-dark ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand"  href="{% url 'index' %}">AWARDS
+      </a>
+    </div>
+    <div class="col-sm-6 col-md-6">
+      {% if user.is_authenticated %}
+
+        <div style="font-family:'Times New Roman', Times, serif; color : wheat">
+        <a href="{%url 'profile'%}">Edit Profile</a>
+        </div>
+
+        
+        <div style="font-family:'Times New Roman', Times, serif;color : wheat">
+            <a href="{%url 'new_project'%}">Add New Project</a>
+        </div>
+        <div style="font-family:'Times New Roman', Times, serif;color : wheat">
+        <a href="{%url 'logout'%}">Logout</a>
+        </div>
+
+      {% else %}
+        <div style="font-family:'Times New Roman', Times, serif;color : wheat">
+        <a class='btn btn-primary' href="{%url 'login'%}">Login</a>
+        </div>
+        <br>
+        <div style="font-family:'Times New Roman', Times, serif;color : wheat">
+        <a class='btn btn-primary' href="{%url 'register'%}">Register</a>
+        </div>
+
+{% endif %}
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4 navbar-right">
+
+      <form class="navbar-form" role="search" action="{% url 'search' %}">
+
+        <div class="input-group">
+          <input type="text" style="font-family:'Times New Roman', Times, serif;" class="form-control " placeholder="Search Project" name="project">
+          <div class="input-group-btn">
+            <button class="btn btn-danger " style="font-family:'Times New Roman', Times, serif;" type="submit">Search.</button>
+          </div>
+        </div>
+
+
+      </form>
+
+    </div>
+
+  </div>
+</nav>
