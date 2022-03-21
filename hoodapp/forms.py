@@ -25,3 +25,8 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile 
         fields = ("user","bio","profile_image","neighbourhood","email")
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Posts
+        fields=("title","user","post","neighbourhood","pub_date")

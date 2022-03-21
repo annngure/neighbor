@@ -11,7 +11,8 @@ urlpatterns=[
     path('register/',views.registerView,name="register"),
     path('logout/',LogoutView.as_view(next_page ="index"), name="logout"),
     path('profile/',views.profileView, name="profile"),
-    path('search/',views.search_business,name ='search')
+    path('search/',views.search_business,name ='search'),
+    # path('post/')
 
 ]
 
