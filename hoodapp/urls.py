@@ -6,5 +6,12 @@ from django.conf.urls.static import static
 
 
 urlpatterns=[
-    path('',views.index, name= "index")
+    path('',views.index, name= "index"),
+    path('login/',LoginView.as_view(), name="login"),
+    path('register/',views.registerView,name="register"),
+    path('logout/',LogoutView.as_view(next_page ="index"), name="logout")
 ]
+
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+    
