@@ -29,6 +29,27 @@ class NeighbourHood(models.Model):
 
     @classmethod
     def search_neighbourHood(cls,searchterm):
-        projects = cls.objects.filter(name__icontains=search_term)
-        return projects   
-        
+        neighbourHood= cls.objects.filter(name__icontains=search_term)
+        return neighbourHood  
+
+class User(models.Model):
+    User_name=models.CharField(max_length=255)
+    email=models.EmailField()
+
+class Business(models.Model):
+    Business_name=models.CharField(max_length=255)
+    User = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
+    Business_email=models.EmailField()
+
+
+    def save_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
+
+    @classmethod
+    def search_business(cls,searchterm):
+        business = cls.objects.filter(name__icontains=search_term)
+        return business  
+
