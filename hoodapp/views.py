@@ -8,7 +8,6 @@ from django.contrib import auth,messages
 from .models import *
 # Create your views here.
 def index(request):
-
     return render(request,'index.html')
 
 
