@@ -9,7 +9,8 @@ urlpatterns=[
     path('',views.index, name= "index"),
     path('login/',LoginView.as_view(next_page='index'), name="login"),
     path('register/',views.registerView,name="register"),
-    path('logout/',LogoutView.as_view(next_page ="index"), name="logout")
+    path('logout/',LogoutView.as_view(next_page ="index"), name="logout"),
+     path('search/',views.search_business,name ='search')
 ]
 
 if settings.DEBUG:

@@ -48,3 +48,18 @@ def loginPage(request):
 def logout(request):
     auth.logout(request)
     return redirect('login')
+
+def search_business(request):
+    if 'keyword' in request.GET and request.GET["keyword"]:
+        search_term = request.GET.get("keyword")
+        searched_projects = Business.search_business(search_term)
+        message = f"{search_term}"
+        context={
+        "message":message,
+        "business": searched_projects
+        }
+        return render(request, 'search.html',context)
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html')
