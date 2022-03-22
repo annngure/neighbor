@@ -2,7 +2,7 @@ Developer
 Ngure Ann
 
 Description
-project where one can post or view other projects .
+Website used to display information about My Neibourhood.
 
 
 
@@ -12,10 +12,10 @@ Technologies used
 - Django
 - Postgresql
 -SQLAlchemy
--serializer
+
 
 Get project from github .
-https://github.com/annngure/-Awwards.git
+https://github.com/annngure/neighbor.git
 
 Create and activate the virtual environment
 python3 -m virtualenv virtual
@@ -28,7 +28,7 @@ In a new terminal, open the postgresql shell with psql.
 
 CREATE DATABASE tutorial;
 Make and run migrations
-python3 manage.pymake migrations && python3.8 manage.py migrate
+python3 manage.py makemigrations && python3.8 manage.py migrate
 Run the app
 
 
