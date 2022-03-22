@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
+from datetime import dt
 # Create your models here.
 
 class NeighbourHood(models.Model):
@@ -36,6 +37,7 @@ class Business(models.Model):
     Business_name =models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     Business_email = models.EmailField()
+    pub_date = models.DateTimeField(auto_now_add=True) 
 
     def save_business(self):
         self.save()

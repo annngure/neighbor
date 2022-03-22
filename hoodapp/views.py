@@ -96,3 +96,12 @@ def post(request):
     context={
         "form":form}
     return render(request,'post.html',context)
+
+def business_post(request):
+    business=Business.objects.all()
+    neighbourHood = NeighbourHood.objects.all() 
+    context ={
+        "business":business,
+        "neighbourHood":NeighbourHood
+    }
+    return render(request,'Bussiness_Post.hmtl',context)
