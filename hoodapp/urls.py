@@ -13,7 +13,8 @@ urlpatterns=[
     path('profile/',views.profileView, name="profile"),
     path('search/',views.search_business,name ='search'),
     path('post/',views.post,name ='post'),
-    path('Bussiness_Post/',views.business_post, name='business_post')
+    path('Bussiness_Post/',views.business_post, name='business_post'),
+    path('occupant/',views.occupants, name='occupant')
 
 ]
 

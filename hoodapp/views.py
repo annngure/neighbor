@@ -54,7 +54,7 @@ def profileView(request):
             image =form.save(commit = False)
             image.user = current_user
             image.save()
-        return redirect ('index')
+        return redirect ('occupant')
 
     else:
         form = UpdateProfileForm()
