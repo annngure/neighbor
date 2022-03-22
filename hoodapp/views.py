@@ -46,14 +46,11 @@ def loginPage(request):
     return render(request,'registration/login.html')
 
 def profileView(request):
-    current_user = request.user
-
     if request.method == 'POST':
-        form = UpdateProfileForm(request.POST,request.FILES, instance = current_user.profile)
+        form = UpdateProfileForm(request.POST,request.FILES)
         if form.is_valid():
-            image =form.save(commit = False)
-            image.user = current_user
-            image.save()
+            profile =form.save(commit = False)
+            profile.save()
         return redirect ('occupant')
 
     else:
@@ -99,16 +96,16 @@ def post(request):
 
 def business_post(request):
     business=Business.objects.all()
-    neighbourHood = NeighbourHood.objects.all() 
+    post =Posts.objects.all()
     context ={
         "business":business,
-        "neighbourHood":NeighbourHood
+        "post":post
     }
     return render(request,'Bussiness_Post.html',context)
 
 def occupants(request):
-    profile= Profile.objects.all()
+    profiles= Profile.objects.all()
     context={
-        "profile":profile
+        "profiles":profiles
     }
     return render(request,'occupant.html',context)

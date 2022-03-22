@@ -36,7 +36,7 @@ class NeighbourHood(models.Model):
 class Business(models.Model):
     Business_name =models.CharField(max_length=100)
     Owner_name = models.CharField(max_length=100, default=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, default=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=True)
     Business_email = models.EmailField()
     
 
@@ -60,9 +60,10 @@ class Business(models.Model):
 class Profile(models.Model):
     name= models.CharField(max_length=100,null=True)
     occupation= models.CharField(max_length=100,null=True)
-    profile_image = models.ImageField(upload_to = 'image/', blank=True)
+    profile_image = models.ImageField(upload_to = 'image/')
     Location = models.CharField(max_length=255, null=True)
     email=models.EmailField()
+
     def save_profile(self):
         self.save()
 
@@ -70,7 +71,7 @@ class Profile(models.Model):
         self.delete()
     
     def __str__(self):
-        return self.bio
+        return self.name
     
 
 class Posts(models.Model):
