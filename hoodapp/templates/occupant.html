@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<body>
+<h1 class="text-center">Occupants in the Hood.</h1>
+    <div class="row">
+       {%for profile in profile%} 
+       <div class="col-sm-4 col-md-4 col-lg-4">       
+            <div class="card"style="width: 18rem;">
+                <div class="card-body">
+                    <img src="{{profile.profile_image.url}}" alt="{{image.title}}" class="img-fluid"> 
+                    <p>Name:{{profile.name}}</p>
+                    <p >Occupation:{{profile.occupation}}</p>
+                    <p >Email:{{profile.email}}</p>
+
+                      
+
+
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+
+</body>
+{%endblock%}

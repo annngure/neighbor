@@ -105,3 +105,10 @@ def business_post(request):
         "neighbourHood":NeighbourHood
     }
     return render(request,'Bussiness_Post.html',context)
+
+def occupants(request):
+    profile= Profile.objects.all()
+    context={
+        "profile":profile
+    }
+    return render(request,'occupant.html',context)
