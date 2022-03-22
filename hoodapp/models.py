@@ -58,10 +58,10 @@ class Business(models.Model):
         return self.Business_name
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = HTMLField()
+    name= models.CharField(max_length=100,null=True)
+    occupation= models.CharField(max_length=100,null=True)
     profile_image = models.ImageField(upload_to = 'image/', blank=True)
-    neighbourhood = models.ForeignKey(NeighbourHood,on_delete=models.CASCADE, blank=True)
+    Location = models.CharField(max_length=255, null=True)
     email=models.EmailField()
     def save_profile(self):
         self.save()
