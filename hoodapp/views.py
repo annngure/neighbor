@@ -84,4 +84,15 @@ def search_business(request):
         return render(request, 'search.html')
 
 def post(request):
-    return render(request,'post.html')
+    if request.method=="POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"Post sucessful.")
+            return redirect('index')   
+    else:
+        messages.error(request,"Invalid Information")
+        form = PostForm()
+    context={
+        "form":form}
+    return render(request,'post.html',context)

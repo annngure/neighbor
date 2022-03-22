@@ -29,4 +29,4 @@ class UpdateProfileForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Posts
-        fields=("title","user","post","neighbourhood")
+        fields=("title","user","post","neighbourhood","business")
