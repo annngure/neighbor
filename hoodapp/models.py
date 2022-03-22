@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
-from datetime import dt
+import datetime as dt
 # Create your models here.
 
 class NeighbourHood(models.Model):
@@ -26,7 +26,7 @@ class NeighbourHood(models.Model):
             raise Http404()
 
     def __str__(self):
-        return self.name
+        return self.Name
 
     @classmethod
     def search_neighbourHood(cls,searchterm):
@@ -35,9 +35,10 @@ class NeighbourHood(models.Model):
 
 class Business(models.Model):
     Business_name =models.CharField(max_length=100)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    Owner_name = models.CharField(max_length=100, default=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=True)
     Business_email = models.EmailField()
-    pub_date = models.DateTimeField(auto_now_add=True) 
+    
 
     def save_business(self):
         self.save()
@@ -73,12 +74,12 @@ class Profile(models.Model):
     
 
 class Posts(models.Model):
-    title = models.CharField(max_length=100)
-    post = HTMLField()
+    title = models.CharField(max_length=100, null=True)
+    post = HTMLField(null=True)
     pub_date = models.DateTimeField(auto_now_add=True)    
     neighbourhood = models.ForeignKey(NeighbourHood,on_delete=models.CASCADE)
-    business = models.ForeignKey(Business,on_delete=models.CASCADE)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    business = models.ForeignKey(Business,on_delete=models.CASCADE, null=True)
+    Owner_name = models.CharField(max_length=100, null=True)
 
 
     def save_post(self):

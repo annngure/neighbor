@@ -89,7 +89,7 @@ def post(request):
         if form.is_valid():
             form.save()
             messages.success(request,"Post sucessful.")
-            return redirect('index')   
+            return redirect('Bussiness_Post.hmtl')   
     else:
         messages.error(request,"Invalid Information")
         form = PostForm()
