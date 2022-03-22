@@ -6,16 +6,21 @@
   {% include 'navbar.html' %} 
   <div class="container" style="font-family:'Times New Roman', Times, serif;">
     <div class="row">
-      <form   method="post" style="font-family:'Times New Roman', Times, serif; ">
-        {%csrf_token%} 
-        {%bootstrap_form form%}
-        <br>
-        <div class="form-group">
-          <input type="submit" class="btn btn-danger btn-md" value="Post">
+      <div class="col-md-6">
+        <div class="card border-primary mb-6" style="max-width:25rem;">
+          <div class="card-body text-center">
+            <form   method="post" style="font-family:'Times New Roman', Times, serif; ">
+              {%csrf_token%} 
+              {%bootstrap_form form%}
+              <br>
+            
+              <div class="form-group">
+                <input type="submit" class="btn btn-danger btn-md" value="Post">
+              </div>
+            </form>
+          </div>
         </div>
-        
-      </form>
-
+      </div>
       {% block scripts %}
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

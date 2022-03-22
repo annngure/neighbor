@@ -24,7 +24,7 @@ class NewUserForm(UserCreationForm):
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile 
-        fields = ("name","occupation","profile_image","location","email")
+        fields = ("name","occupation","profile_image","Location","email")
 
 class PostForm(forms.ModelForm):
     class Meta:
