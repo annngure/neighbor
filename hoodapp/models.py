@@ -74,10 +74,9 @@ class Profile(models.Model):
     
 
 class Posts(models.Model):
-    title = models.CharField(max_length=100, null=True)
     post = HTMLField(null=True)
     pub_date = models.DateTimeField(auto_now_add=True)    
-    neighbourhood = models.ForeignKey(NeighbourHood,on_delete=models.CASCADE)
+    Location = models.CharField(max_length=255, null = True)
     business = models.ForeignKey(Business,on_delete=models.CASCADE, null=True)
     Owner_name = models.CharField(max_length=100, null=True)
 

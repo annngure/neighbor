@@ -89,7 +89,7 @@ def post(request):
         if form.is_valid():
             form.save()
             messages.success(request,"Post sucessful.")
-            return redirect('Bussiness_Post.hmtl')   
+            return redirect('business_post')   
     else:
         messages.error(request,"Invalid Information")
         form = PostForm()
@@ -104,4 +104,4 @@ def business_post(request):
         "business":business,
         "neighbourHood":NeighbourHood
     }
-    return render(request,'Bussiness_Post.hmtl',context)
+    return render(request,'Bussiness_Post.html',context)
