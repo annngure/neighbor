@@ -21,10 +21,10 @@ class NewUserForm(UserCreationForm):
         return user
 
 
-# class UpdateProfileForm(forms.ModelForm):
-#     class Meta:
-#         model = Profile 
-#         fields = ("user","bio","profile_image","neighbourhood","email")
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile 
+        fields = ("name","occupation","profile_image","location","email")
 
 class PostForm(forms.ModelForm):
     class Meta:
